@@ -333,14 +333,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const escapeHTML = (value) =>
+      String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
     activeAnnouncementsContainer.innerHTML = activeAnnouncements
       .map(
         (announcement) => `
           <div class="announcement-banner-item">
             <span class="announcement-banner-tag">Notice</span>
             <div>
-              <strong>${announcement.title}</strong>
-              <p>${announcement.message}</p>
+              <strong>${escapeHTML(announcement.title)}</strong>
+              <p>${escapeHTML(announcement.message)}</p>
             </div>
           </div>
         `
