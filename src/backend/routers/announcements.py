@@ -42,6 +42,28 @@ class AnnouncementUpdatePayload(BaseModel):
     start_date: Optional[str] = None
     expires_at: Optional[str] = None
 
+    @field_validator("expires_at")
+    @classmethod
+    def validate_expiration_date(cls, value: Optional[str]) -> Optional[str]:
+        if value is None or value == "":
+            return None
+        try:
+            date.fromisoformat(value)
+        except ValueError as exc:
+            raise ValueError("expires_at must be a valid ISO date when provided") from exc
+        return value
+
+    @field_validator("start_date")
+    @classmethod
+    def validate_start_date(cls, value: Optional[str]) -> Optional[str]:
+        if value is None or value == "":
+            return None
+        try:
+            date.fromisoformat(value)
+        except ValueError as exc:
+            raise ValueError("start_date must be a valid ISO date when provided") from exc
+        return value
+
 
 def _serialize_announcement(item: Dict[str, Any]) -> Dict[str, Any]:
     serialized = dict(item)
