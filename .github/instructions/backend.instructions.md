@@ -1,7 +1,6 @@
 ---
 applyTo: "backend/**/*,*.py"
 ---
-
 ## Backend Guidelines
 
 - All API endpoints must be defined in the `routers` folder.

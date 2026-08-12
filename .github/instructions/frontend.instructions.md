@@ -1,7 +1,6 @@
 ---
 applyTo: "*.html,*.css,*.js"
 ---
-
 ## Frontend Guidelines
 
 - Use accessibility attributes (alt text, aria labels) and color schemes.
