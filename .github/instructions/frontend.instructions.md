@@ -1,0 +1,3 @@
+---
+applyTo: "*.html,*.css,*.js"
+---
