@@ -23,11 +23,14 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="announcements-button" class="header-action-button">Announcements</button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
       </div>
     </header>
+
+    <div id="active-announcements" class="announcement-banner" aria-live="polite"></div>
 
     <main>
       <section id="activities-container">
@@ -131,6 +134,47 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <div id="announcement-modal" class="modal hidden">
+      <div class="announcement-modal-content">
+        <div class="announcement-modal-header">
+          <h3>Announcements</h3>
+          <button id="close-announcement-modal" class="icon-close" aria-label="Close announcements">&times;</button>
+        </div>
+        <div id="announcement-list" class="announcement-list"></div>
+        <div id="announcement-form-wrapper" class="announcement-form-wrapper hidden">
+          <h4 id="announcement-form-title">Add announcement</h4>
+          <form id="announcement-form">
+            <input type="hidden" id="announcement-id" />
+            <div class="form-group">
+              <label for="announcement-title">Title</label>
+              <input type="text" id="announcement-title" maxlength="120" required />
+            </div>
+            <div class="form-group">
+              <label for="announcement-message">Message</label>
+              <textarea id="announcement-message" rows="4" maxlength="500" required></textarea>
+            </div>
+            <div class="announcement-date-grid">
+              <div class="form-group">
+                <label for="announcement-start-date">Start date (optional)</label>
+                <input type="date" id="announcement-start-date" />
+              </div>
+              <div class="form-group">
+                <label for="announcement-expires-at">Expiration date</label>
+                <input type="date" id="announcement-expires-at" required />
+              </div>
+            </div>
+            <div class="announcement-form-actions">
+              <button type="button" id="cancel-announcement-form" class="secondary-button">Cancel</button>
+              <button type="submit">Save announcement</button>
+            </div>
+          </form>
+        </div>
+        <div class="announcement-footer">
+          <button id="open-create-announcement" class="primary-button" type="button">Add announcement</button>
+        </div>
       </div>
     </div>
 
